@@ -4,20 +4,24 @@ import { Text, KeyboardAvoidingView } from "react-native";
 import { Input, Button, ErrorText } from "../../components/Form";
 import styles from "./styles";
 
-const fetchData = (username, password, navigation) => {
-  fetch("https://jsonplaceholder.typicode.com/users", {
+const fetchData = async (username, password, navigation) => {
+  const rawResult = await fetch("https://jsonplaceholder.typicode.com/users", {
     method: "POST",
     body: JSON.stringify({
       username,
       password,
     }),
-  }).then((response) => response.json())
-    .then(() => {
-      navigation.push("Home");
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
+  })
+  const result = await rawResult.json();
+  navigation.push("Home");
+
+  // If it was a real API, we would do that before going to the Home screen.
+
+  // if (result.code === 200) {
+  //  navigation.push("Home");
+  // } else {
+  //   console.error("error", result.error);
+  // }
 }
 
 const reducer = (state, action) => {
