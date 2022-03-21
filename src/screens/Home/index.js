@@ -1,5 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+
+import styles from "./styles";
 
 const Users = [{ id: 1, name: "John Doe", age: 21, gender: "Man" },
 { id: 2, name: "Marc Doe", age: 22, gender: "Man" },
@@ -62,12 +64,3 @@ export default class AppClass extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

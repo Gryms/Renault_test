@@ -1,7 +1,7 @@
 import react from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react-native";
 
-import SignIn from "../SignIn.dumb";
+import SignIn from "../SignIn";
 
 it("renders default elements", () => {
   const { getAllByText, getByPlaceholderText } = render(<SignIn />);
@@ -15,6 +15,10 @@ it("shows invalid username and password error message simultaneously", () => {
   const { getByTestId, getByText } = render(<SignIn />);
 
   fireEvent.press(getByTestId("SignIn.Button"));
+  /*
+  We should most probably use testID to get the error message but since we pass an array of messages to ErrorText,
+  it will be harder to have unique testID for every error text.
+  */
   expect(getByText("Invalid username."));
   expect(getByText("Invalid password."));
 });
